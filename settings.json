@@ -1,0 +1,29 @@
+{
+    "bot_name": "MoonShine Trader AI",
+    "version": "2.0",
+
+    "timeframe": "M15",
+
+    "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDJPY",
+        "XAUUSD"
+    ],
+
+    "risk_percent": 1.0,
+
+    "minimum_confidence": 85,
+
+    "max_open_trades": 1,
+
+    "max_daily_loss": 3,
+
+    "scan_interval": 60,
+
+    "use_news_filter": true,
+
+    "use_session_filter": true,
+
+    "demo_mode": true
+}

@@ -1,0 +1,13 @@
+# MoonShine Trader AI Configuration
+
+BOT_NAME = "MoonShine Trader AI"
+VERSION = "1.0"
+
+SYMBOL = "EURUSD"
+TIMEFRAME = "M15"
+
+RISK_PERCENT = 1.0
+MAX_OPEN_TRADES = 3
+
+TAKE_PROFIT_PIPS = 40
+STOP_LOSS_PIPS = 20
