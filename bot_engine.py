@@ -1,6 +1,7 @@
 from market_scanner import MarketScanner
 from performance_analyzer import PerformanceAnalyzer
 
+
 class BotEngine:
 
     def __init__(self):
@@ -11,11 +12,16 @@ class BotEngine:
 
         results = []
 
-        for symbol, prices in markets.items():
+        for symbol, market_data in markets.items():
 
-            result = self.scanner.scan(symbol, prices)
+            result = self.scanner.scan(
+                symbol,
+                market_data
+            )
 
-            self.performance.update(result["decision"])
+            self.performance.update(
+                result["decision"]
+            )
 
             results.append(result)
 

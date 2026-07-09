@@ -1,27 +1,38 @@
 class TradePlanner:
 
-    def plan_buy(self, entry, atr):
+    def plan(
+        self,
+        decision,
+        current_price,
+        atr,
+        risk_reward=2.0
+    ):
 
-        stop_loss = entry - (atr * 2)
+        if atr <= 0:
 
-        take_profit = entry + (atr * 4)
+            return {
+                "entry": current_price,
+                "stop_loss": current_price,
+                "take_profit": current_price
+            }
+
+        if "BUY" in decision:
+
+            stop_loss = current_price - (atr * 2)
+            take_profit = current_price + ((atr * 2) * risk_reward)
+
+        elif "SELL" in decision:
+
+            stop_loss = current_price + (atr * 2)
+            take_profit = current_price - ((atr * 2) * risk_reward)
+
+        else:
+
+            stop_loss = current_price
+            take_profit = current_price
 
         return {
-            "entry": round(entry, 5),
+            "entry": round(current_price, 5),
             "stop_loss": round(stop_loss, 5),
-            "take_profit": round(take_profit, 5),
-            "risk_reward": "1:2"
-        }
-
-    def plan_sell(self, entry, atr):
-
-        stop_loss = entry + (atr * 2)
-
-        take_profit = entry - (atr * 4)
-
-        return {
-            "entry": round(entry, 5),
-            "stop_loss": round(stop_loss, 5),
-            "take_profit": round(take_profit, 5),
-            "risk_reward": "1:2"
+            "take_profit": round(take_profit, 5)
         }

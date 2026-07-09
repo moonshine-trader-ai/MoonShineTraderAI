@@ -1,18 +1,37 @@
 from datetime import datetime
+import os
+
 
 class TradeJournal:
 
+    def __init__(self):
+
+        self.filename = "trade_journal.txt"
+
     def save(self, symbol, decision, score, reasons):
 
-        print("\n========== TRADE JOURNAL ==========")
-        print("Time :", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-        print("Pair :", symbol)
-        print("Decision :", decision)
-        print("Score :", score)
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        print("\nReasons:")
+        lines = [
+            "\n========== TRADE JOURNAL ==========",
+            f"Time : {now}",
+            f"Pair : {symbol}",
+            f"Decision : {decision}",
+            f"Score : {score}",
+            "",
+            "Reasons:"
+        ]
 
         for reason in reasons:
-            print("-", reason)
+            lines.append(f"- {reason}")
 
-        print("===================================\n")
+        lines.append("===================================")
+
+        # Print to terminal
+        for line in lines:
+            print(line)
+
+        # Save to file
+        with open(self.filename, "a", encoding="utf-8") as file:
+            for line in lines:
+                file.write(line + "\n")

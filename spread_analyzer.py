@@ -11,6 +11,9 @@ class SpreadAnalyzer:
 
     def analyze(self, symbol, spread):
 
+        if spread is None:
+            return "NO_SPREAD_DATA", 0
+
         limit = self.max_spread.get(symbol, 2.0)
 
         if spread <= limit:
